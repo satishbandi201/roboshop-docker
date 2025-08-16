@@ -16,13 +16,13 @@ RUN apk add --no-cache pcre
 # Create app user
 # RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
 # USER roboshop
-RUN addgroup --system roboshop && adduser --system --ingroup roboshop roboshop
-USER roboshop
 # Copy installed Python packages from builder
 COPY --from=builder /install /usr/local
 # Copy application code
 COPY --chown=roboshop:roboshop payment.ini .
 COPY --chown=roboshop:roboshop *.py .
+RUN addgroup --system roboshop && adduser --system --ingroup roboshop roboshop
+USER roboshop
 CMD ["uwsgi", "--ini", "payment.ini"]
 
 
