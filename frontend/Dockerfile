@@ -19,7 +19,7 @@
 # USER nginx
 # CMD ["nginx", "-g", "daemon off;"]
 
-FROM nginx
+FROM nginx:latest
 RUN rm -rf /usr/share/nginx/html/index.html
 RUN rm -rf /usr/nginx/nginx.conf
 RUN rm -rf /etc/nginx/conf.d/default.conf
